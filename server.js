@@ -4,7 +4,7 @@ const app = express();
 app.get('/', function (req, res) {
 
     const results = {
-        Message: "hello cac ban"
+        Message: "hello cac ban ne"
     }
 
     return res.json(results)
