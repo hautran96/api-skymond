@@ -10,6 +10,6 @@ app.get('/', function (req, res) {
     return res.json(results)
 })
 
-app.listen(3000, function () {
+app.listen(process.env.PORT, function () {
     console.log('server start success',)
 })
