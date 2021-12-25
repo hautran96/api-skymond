@@ -1,15 +1,24 @@
-const express = require('express')
-const app = express();
+const app = require('./config/express')
+const mongoose = require('mongoose')
+const config = require('./config/env');
+Promise = require('bluebird');
 
-app.get('/', function (req, res) {
+mongoose.Promise = Promise;
 
-    const results = {
-        Message: "hello cac ban ne"
-    }
+mongoose.connect(config.db)
 
-    return res.json(results)
+mongoose.connection.on('open', function () {
+    console.log('Connected to mongodb database');
 })
 
-app.listen(process.env.PORT, function () {
-    console.log('server start success',)
-})
+mongoose.connection.on('reconnected', function () {
+    console.log('MongoDB reconnected!');
+});
+
+const PORT = process.env.PORT || config.port
+
+if (!module.parent) {
+    app.listen(PORT, "0.0.0.0", () => {
+        console.log(`server started on port ${PORT} (${config.env})`);
+    });
+}
