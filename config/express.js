@@ -42,8 +42,8 @@ const appRoutes = require('../app/routes/index.routes')
 
 app.use('/api', appRoutes)
 
-app.get("/", function(req,res){
-    return res.json({"hello word"})
+app.get("/", function (req, res) {
+    return res.json("hello word")
 })
 
 
