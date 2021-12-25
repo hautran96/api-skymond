@@ -42,6 +42,10 @@ const appRoutes = require('../app/routes/index.routes')
 
 app.use('/api', appRoutes)
 
+app.get("/", function(req,res){
+    return res.json({"hello word"})
+})
+
 
 // if error is not an instanceOf APIError, convert it.
 app.use((err, req, res, next) => {
